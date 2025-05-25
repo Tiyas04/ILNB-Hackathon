@@ -1,103 +1,180 @@
-import Image from "next/image";
+"use client"
+import { useState } from "react";
+import { Eye, EyeOff, ArrowLeft, ArrowRight } from "lucide-react";
 
-export default function Home() {
+export default function TripAdvisorSignup() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="min-h-screen flex">
+      {/* Left Panel - Hero Section */}
+      <div className="flex-1 relative overflow-hidden">
+        {/* Background with blur effect */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-blue-400 via-teal-500 to-blue-600"
+          style={{
+            backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><filter id="blur"><feGaussianBlur stdDeviation="20"/></filter></defs><circle cx="200" cy="300" r="150" fill="rgba(255,255,255,0.1)" filter="url(%23blur)"/><circle cx="800" cy="200" r="100" fill="rgba(255,255,255,0.1)" filter="url(%23blur)"/><circle cx="600" cy="700" r="200" fill="rgba(255,255,255,0.1)" filter="url(%23blur)"/></svg>')`,
+          }}
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        
+        {/* Geometric overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 right-10 w-32 h-32 border-2 border-white rotate-45"></div>
+          <div className="absolute bottom-20 left-20 w-24 h-24 border border-white rotate-12"></div>
+          <div className="absolute top-1/3 left-1/4 w-16 h-16 bg-white bg-opacity-10 rounded-full"></div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Top Navigation */}
+        <div className="relative z-10 flex justify-between items-center p-6">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+              <div className="w-6 h-6 flex items-center justify-center">
+                <div className="flex space-x-1">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+              </div>
+            </div>
+            <span className="text-white font-bold text-xl">XYZ Company</span>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="relative z-10 flex flex-col justify-center items-center h-full px-8 -mt-20">
+          <h1 className="text-6xl font-bold text-white text-center mb-8 leading-tight">
+            Let's Get<br />Started...
+          </h1>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
+          <div className="flex justify-between items-end">
+            {/* User Info Card */}
+            <div className="flex items-center space-x-3 bg-black bg-opacity-20 backdrop-blur-sm rounded-xl p-4">
+              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                🦊
+              </div>
+              <div>
+                <div className="text-white font-semibold">User Info</div>
+                <div className="text-white text-sm opacity-80">User Qualification</div>
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <div className="flex space-x-4">
+              <button className="w-12 h-12 bg-black bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-colors">
+                <ArrowLeft size={20} />
+              </button>
+              <button className="w-12 h-12 bg-black bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-colors">
+                <ArrowRight size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Panel - Signup Form */}
+      <div className="flex-1 bg-gray-50 flex flex-col justify-center px-12">
+        <div className="max-w-md mx-auto w-full">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+              <span className="text-black font-bold text-xl">XYZ Company</span>
+            </div>
+          </div>
+
+          {/* Create Account Title */}
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Create Account</h2>
+
+          {/* Social Signup */}
+          <div className="mb-8">
+            <p className="text-center text-gray-600 mb-6">Sign Up With Open Account</p>
+            <div className="flex space-x-4 mb-6">
+              <button className="flex-1 border border-gray-300 rounded-full py-3 px-4 flex items-center justify-center hover:bg-gray-50 transition-colors">
+                <span className="text-xl">🍎</span>
+              </button>
+              <button className="flex-1 border border-gray-300 rounded-full py-3 px-4 flex items-center justify-center hover:bg-gray-50 transition-colors">
+                <span className="text-xl">G</span>
+              </button>
+              <button className="flex-1 border border-gray-300 rounded-full py-3 px-4 flex items-center justify-center hover:bg-gray-50 transition-colors">
+                <span className="text-xl">f</span>
+              </button>
+            </div>
+            
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-4 bg-gray-50 text-gray-500">OR</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="space-y-6">
+            <div>
+              <input
+                type="text"
+                placeholder="Username"
+                className="w-full px-6 py-4 border border-gray-300 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+            
+            <div>
+              <input
+                type="email"
+                placeholder="Email Id"
+                className="w-full px-6 py-4 border border-gray-300 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+            
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                className="w-full px-6 py-4 border border-gray-300 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 pr-12"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="remember"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label htmlFor="remember" className="ml-3 text-gray-600">
+                Remember Me
+              </label>
+            </div>
+
+            <button
+              type="button"
+              className="w-full bg-gray-900 text-white py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors"
+            >
+              Create Account
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
