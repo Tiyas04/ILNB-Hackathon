@@ -1,5 +1,7 @@
 "use client";
+import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
+ 
 
 export default function LandingPage() {
   const router = useRouter();
@@ -47,11 +49,14 @@ export default function LandingPage() {
               Sign Up
             </button>
             <button
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/signup")}
+
+              // onClick={() => router.push("/login")}  THIS IS WAS NOT WORKING UPON CLICK 
               className="bg-gray-900 text-white hover:bg-gray-800 font-semibold px-8 py-4 rounded-full transition"
             >
               Log In
             </button>
+ 
           </div>
         </div>
       </div>
