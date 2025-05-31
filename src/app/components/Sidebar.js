@@ -14,6 +14,10 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { signOut,getAuth } from "firebase/auth";
+import { app } from "./firebase"
+
+const auth = getAuth(app);
 
 export default function Sidebar() {
   const router = useRouter();
@@ -36,13 +40,6 @@ export default function Sidebar() {
   }, [pathname]);
 
   const isActive = (path) => pathname === path;
-
-  const handleLogout = () => {
-    //  TODO: Add your logout logic here
-    // e.g., clear tokens, redirect to login, call logout API, etc.
-    console.log("Logging out...");
-    router.push("/");
-  };
 
   return (
     <>
@@ -85,7 +82,7 @@ export default function Sidebar() {
           {/* Bottom - Logout */}
           <div>
             <button
-              onClick={handleLogout}
+              onClick={() => { signOut(auth) }}
               className="w-full flex items-center px-4 py-3 mt-4 rounded-lg text-sm font-medium text-red-600 hover:bg-gray-100 transition-colors"
             >
               <LogOut className="mr-3 w-5 h-5" />
