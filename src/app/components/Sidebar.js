@@ -34,6 +34,13 @@ export default function Sidebar() {
     { name: "Settings", icon: Settings, path: "/dashboard/settings" },
   ];
 
+  const handlelogout = () => {
+    signOut(auth).then(() => {
+            console.log("Signout Successfully")
+            router.push("/")
+    })
+  }
+
   // Automatically close menu on navigation
   useEffect(() => {
     setMenuOpen(false);
@@ -82,7 +89,7 @@ export default function Sidebar() {
           {/* Bottom - Logout */}
           <div>
             <button
-              onClick={() => { signOut(auth) }}
+              onClick={handlelogout}
               className="w-full flex items-center px-4 py-3 mt-4 rounded-lg text-sm font-medium text-red-600 hover:bg-gray-100 transition-colors"
             >
               <LogOut className="mr-3 w-5 h-5" />
